@@ -1,0 +1,28 @@
+
+
+
+# 建立 model
+php artisan make:model Question
+
+# --------- --------- ---------
+
+# 建立 migration 檔案
+php artisan make:migration create_questions_table
+
+# 執行 migration
+php artisan migrate
+
+# --------- --------- ---------
+
+# 建立 resource controller
+php artisan make:controller QuestionController --resource
+# --resource 會幫你準備好方法：index, create, store, show, edit, update, delete
+# Route::resource('question', 'QuestionController');
+
+# 建立 api controller
+php artisan make:controller api/PostController --api
+# --resource 會幫你準備好方法：index, store, show, update, delete
+# Route::apiResource('post', 'api\PostController');
+
+# 查看 routes 設定
+php artisan route:list

@@ -17,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('try-api', function(Request $request){
+    return [
+        'url' => $request->url(),
+        'method' => $request->getMethod()
+    ];
+});
+
+Route::post('try-api', function(Request $request){
+    return [
+        'url' => $request->url(),
+        'method' => $request->getMethod()
+    ];
+});
