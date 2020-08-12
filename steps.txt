@@ -2,7 +2,7 @@
 
 
 # 建立 model
-php artisan make:model Question
+php artisan make:model Customer
 
 # --------- --------- ---------
 
