@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+//use Illuminate\Validation\Rule;
+//use Illuminate\Validation\Validator;
 
 class CustomerController extends Controller
 {
@@ -25,9 +26,8 @@ class CustomerController extends Controller
      */
     public function create(Request $request)
     {
-        $data = $request->session()->all();
         return view('customer.create', [
-            'data' => $data,
+            'session' => $request->session()->all(),
         ]);
     }
 
@@ -40,16 +40,24 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         // 1. 驗證資料
+
         $validatedData = $request->validate([
-            '姓名' => 'required|max:200'
+            '姓名' => 'required',
+            '手機' => 'nullable|regex:/^09\d{2}-?\d{3}-?\d{3}$/', // 非必填
+        ], [
+            '姓名.required' => '姓名欄位必填',
+            '手機.regex' => '手機號碼請符合格式 09XX-XXX-XXX',
         ]);
 
-        //return $validatedData;
 
         // 2. 儲存
-
         $cs = new Customer();
         $cs->姓名 = $request->姓名;
+        $cs->電話 = $request->電話;
+        $cs->手機 = $request->手機;
+        $cs->傳真 = $request->傳真;
+        $cs->電郵 = $request->電郵;
+        $cs->地址 = $request->地址;
         $cs->save();
 
 

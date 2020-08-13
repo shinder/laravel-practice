@@ -18,7 +18,7 @@
 <div class="container">
     <!--
     <div class="row">
-        <div class="col"><?php print_r($data); ?></div>
+        <div class="col"><?php print_r($session); ?></div>
     </div>
         <div class="row">
         <div class="col"><?php var_dump($errors); ?></div>
@@ -44,7 +44,10 @@
                 </div>
                 <div class="form-group">
                     <label for="手機">手機</label>
-                    <input type="text" class="form-control" id="手機" name="手機">
+                    <input type="text" class="form-control @error('手機') is-invalid @enderror" id="手機" name="手機">
+                    @error('手機')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="傳真">傳真</label>
