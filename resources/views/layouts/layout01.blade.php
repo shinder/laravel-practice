@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
 </head>
 <body>
-
+@section('navbar')
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -49,13 +49,12 @@
         </div>
     </div>
 </nav>
-
+@show
 <div class="container">
     @section('content')
         <p>hi</p>
     @show
 </div>
-
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
