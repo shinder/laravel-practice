@@ -88,7 +88,10 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $c = Customer::findOrFail($id);
+        return view('customer.edit', [
+            'customer' => $c,
+        ]);
     }
 
     /**
