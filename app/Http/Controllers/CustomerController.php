@@ -16,7 +16,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $c = Customer::orderBy('客戶編號', 'desc')->paginate(5);
+        return view('customer.index', [
+           'customers' => $c
+        ]);
     }
 
     /**
