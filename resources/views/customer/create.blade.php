@@ -1,31 +1,7 @@
-<!doctype html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <style>
-        table.table>tbody>tr:hover {
-            background-color: olivedrab;
-        }
-    </style>
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.layout01')
 
-<div class="container">
-    <!--
-    <div class="row">
-        <div class="col"><?php print_r($session); ?></div>
-    </div>
-        <div class="row">
-        <div class="col"><?php var_dump($errors); ?></div>
-    </div>
-    -->
+@section('content')
     <div class="row" style="margin-top: 1rem;">
-
         <div class="col">
             <!-- `客戶編號`, `姓名`, `電話`, `手機`, `傳真`, `電郵`, `地址` -->
             <form action=" {{ route('customer.store') }} " method="post">
@@ -65,11 +41,5 @@
             </form>
         </div>
     </div>
-
-</div>
-
-<script src="/js/jquery-3.5.1.js"></script>
-<script src="/bootstrap/js/bootstrap.js"></script>
-</body>
-</html>
+@endsection
 

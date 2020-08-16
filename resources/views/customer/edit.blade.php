@@ -1,21 +1,6 @@
-<!doctype html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <style>
-        table.table>tbody>tr:hover {
-            background-color: olivedrab;
-        }
-    </style>
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.layout01')
 
-<div class="container">
+@section('content')
     <div class="row" style="margin-top: 1rem;">
 
         <div class="col">
@@ -62,11 +47,4 @@
             </form>
         </div>
     </div>
-
-</div>
-
-<script src="/js/jquery-3.5.1.js"></script>
-<script src="/bootstrap/js/bootstrap.js"></script>
-</body>
-</html>
-
+@endsection
