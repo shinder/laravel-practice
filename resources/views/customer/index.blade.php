@@ -32,6 +32,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">{{ $customers->links() }}</div>
+        <!-- 客製化 pagination -->
+        <!-- php artisan vendor:publish --tag=laravel-pagination -->
+        <div class="col">{{ $customers->links('vendor.pagination.bootstrap-4') }}</div>
     </div>
 @endsection
