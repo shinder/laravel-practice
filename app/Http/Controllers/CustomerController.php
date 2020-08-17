@@ -14,11 +14,16 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $c = Customer::orderBy('客戶編號', 'desc')->paginate(5);
+        $search = $request->search;
+
+        // $c = Customer::orderBy('客戶編號', 'desc')->paginate(5);
+        $c = Customer::where('姓名', 'LIKE', "%{$search}%")->orderBy('客戶編號', 'desc')->paginate(5);
+
         return view('customer.index', [
-           'customers' => $c
+           'customers' => $c,
+            'search' => $search,
         ]);
     }
 
