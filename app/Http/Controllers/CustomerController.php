@@ -52,7 +52,6 @@ class CustomerController extends Controller
             '手機.regex' => '手機號碼請符合格式 09XX-XXX-XXX',
         ]);
 
-
         // 2. 儲存
         $cs = new Customer();
         $cs->姓名 = $request->姓名;
@@ -63,10 +62,8 @@ class CustomerController extends Controller
         $cs->地址 = $request->地址;
         $cs->save();
 
-
         // 3. 轉向
-        return redirect()->route('db01');
-
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -106,7 +103,25 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            '姓名' => 'required',
+            '手機' => 'nullable|regex:/^09\d{2}-?\d{3}-?\d{3}$/', // 非必填
+        ], [
+            '姓名.required' => '姓名欄位必填',
+            '手機.regex' => '手機號碼請符合格式 09XX-XXX-XXX',
+        ]);
+
+        Customer::where('客戶編號', $id)
+            ->update([
+                '姓名' => $request->姓名,
+                '電話' => $request->電話,
+                '手機' => $request->手機,
+                '傳真' => $request->傳真,
+                '電郵' => $request->電郵,
+                '地址' => $request->地址,
+            ]);
+
+        return redirect()->route('customer.index');
     }
 
     /**
