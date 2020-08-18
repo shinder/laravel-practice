@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col">
-            {{ $products->links() }}
+            {{ $products->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 
