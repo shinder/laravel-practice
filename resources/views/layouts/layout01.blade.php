@@ -29,6 +29,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/customer">客戶列表</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/create">新增產品</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product">產品列表</a>
+                </li>
             </ul>
         </div>
     </div>
