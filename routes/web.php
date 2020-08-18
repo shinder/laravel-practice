@@ -35,3 +35,5 @@ Route::post('/try-post', 'RequestController@getPost');
 Route::get('/customers', 'RequestController@findCustomers');
 
 Route::resource('customer', 'CustomerController');
+
+Route::resource('product', 'ProductController');

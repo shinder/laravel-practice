@@ -50,10 +50,11 @@ class CustomerController extends Controller
         // 1. 驗證資料
 
         $validatedData = $request->validate([
-            '姓名' => 'required',
+            '姓名' => 'required|min:2',
             '手機' => 'nullable|regex:/^09\d{2}-?\d{3}-?\d{3}$/', // 非必填
         ], [
             '姓名.required' => '姓名欄位必填',
+            '姓名.min' => '姓名欄位至少兩個字',
             '手機.regex' => '手機號碼請符合格式 09XX-XXX-XXX',
         ]);
 
