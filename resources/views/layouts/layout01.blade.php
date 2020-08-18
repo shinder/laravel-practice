@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@section('title') my website @show</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css">
 </head>
 <body>
 @section('navbar')
@@ -47,5 +48,7 @@
 </div>
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+@yield('scripts')
 </body>
 </html>
