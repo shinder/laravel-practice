@@ -12,11 +12,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $p = Product::paginate(5);
+        $search = $request->search;
+        $p = Product::where('品名', 'LIKE', "%$search%")
+            ->paginate(5);
         return view('product.index', [
-            'products' => $p
+            'products' => $p,
+            'search' => $search,
         ]);
     }
 

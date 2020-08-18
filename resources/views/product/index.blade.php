@@ -1,7 +1,16 @@
 @extends('layouts.layout01')
 
 @section('content')
-
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search"
+                       name="search" value="{{ $search }}"
+                       placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             {{ $products->links('vendor.pagination.bootstrap-4') }}
