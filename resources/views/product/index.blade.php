@@ -1,31 +1,31 @@
 @extends('layouts.layout01')
 
 @section('content')
-    <?php  //print_r($sess) ?>
     <div class="row">
         <div class="col d-flex justify-content-end">
             <form class="form-inline my-2 my-lg-0">
                 <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
                 <input class="form-control mr-sm-1" type="number" step="500"
-                       value="{{ $minPrice }}"
+                       value="{{ Request::get('minPrice') }}"
                        placeholder="最低價格" name="minPrice">-
                 <input class="form-control mr-sm-1" type="number" step="500"
-                       value="{{ $maxPrice }}"
+                       value="{{ Request::get('maxPrice') }}"
                        placeholder="最高價格" name="maxPrice">
                 &nbsp;&nbsp;&nbsp;
                 <input class="form-control mr-sm-2" type="search"
-                       name="search" value="{{ $search }}"
+                       name="search" value="{{ Request::get('search') }}"
                        placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
+
     </div>
     <div class="row">
         <div class="col">
             {{ $products->appends([
-                'search' => $search,
-                'minPrice' => $minPrice,
-                'maxPrice' => $maxPrice,
+                'search' => Request::get('search'),
+                'minPrice' => Request::get('minPrice'),
+                'maxPrice' => Request::get('maxPrice'),
             ])->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>

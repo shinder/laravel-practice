@@ -14,21 +14,20 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search;
-        $minPrice = $request->minPrice ?? 0;
-        $maxPrice = $request->maxPrice ?? 1000000;
-
-        $p = Product::where('品名', 'LIKE', "%$search%")
-            ->where('售價', '>=', $minPrice)
-            ->where('售價', '<=', $maxPrice)
-            ->paginate(5);
+        $conditions = [];
+        if(! empty($request->search)){
+            $conditions[] = ['品名', 'LIKE', "%{$request->search}%"];
+        }
+        if(intval($request->minPrice) > 0){
+            $conditions[] = ['售價', '>=', $request->minPrice];
+        }
+        if(intval($request->maxPrice) > 0){
+            $conditions[] = ['售價', '<=', $request->maxPrice];
+        }
+        $products = Product::where($conditions)->paginate(20);
 
         return view('product.index', [
-            'products' => $p,
-            'search' => $search,
-            'minPrice' => $minPrice,
-            'maxPrice' => $maxPrice,
-            'sess' => session()->all()
+            'products' => $products,
         ]);
     }
 
