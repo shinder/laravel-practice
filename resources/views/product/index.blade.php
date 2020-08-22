@@ -22,11 +22,7 @@
     </div>
     <div class="row">
         <div class="col">
-            {{ $products->appends([
-                'search' => Request::get('search'),
-                'minPrice' => Request::get('minPrice'),
-                'maxPrice' => Request::get('maxPrice'),
-            ])->links('vendor.pagination.bootstrap-4') }}
+            {{ $products->withQueryString()->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 
