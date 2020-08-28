@@ -16,7 +16,13 @@ class RequestController extends BaseController
     }
 
     public function getQueryString(Request $request) {
-        return $request->all();
+        $v = session('my', 0);
+        session(['my' => $v+1]);
+
+        return [
+            'session_my' =>  session('my'),
+            'request' => $request->all()
+        ];
 
 //        return view('home', [
 //            'name' => 'getQueryString'
