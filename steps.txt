@@ -1,10 +1,24 @@
 
 
 
+
+
+# --------- --------- ---------
+# https://stackoverflow.com/questions/34545641/php-artisan-makeauth-command-is-not-defined/34546836
+# https://medium.com/@agavitalis/php-artisan-make-auth-command-is-not-defined-laravel-6-b51adcc6356d
+
+composer require laravel/ui
+php artisan ui vue --auth
+php artisan migrate
+
+# 舊版的 auth 作法
+php artisan make:auth
+
+# --------- --------- ---------
 # 客製化 pagination
 php artisan vendor:publish --tag=laravel-pagination
 
-
+# --------- --------- ---------
 # 建立 model
 php artisan make:model Customer
 
