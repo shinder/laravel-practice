@@ -1,6 +1,32 @@
 
 
-
+# --------- --------- ---------
+// migration: answers table
+public function up(){
+    Schema::create('answers', function(Blueprint $table){
+        $table->id();
+        $table->integer('question_id')->unsigned();
+        $table->text('content');
+        $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+    });
+}
+public function down(){
+    Schema::table('answers', function(Blueprint $table){
+        $table->dropForeign('answers_question_id_foreign');
+    });
+    Schema::dropIfExists('answers');
+}
+# --------- --------- ---------
+class Question extends Model{
+    public function answers(){
+        return $this->hasMany('App\Models\Answer');
+    }
+}
+class Answer extends Model {
+    public function question() {
+        return $this->belongsTo('App\Models\Question');
+    }
+}
 
 
 # --------- --------- ---------
